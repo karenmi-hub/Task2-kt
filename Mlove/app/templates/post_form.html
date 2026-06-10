@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{% if post %}Редактировать пост{% else %}Новый пост{% endif %}</h1>
+<form method="post">
+    <input type="text" name="title" placeholder="Заголовок" value="{{ post.title if post else '' }}" required><br>
+    <textarea name="body" placeholder="Содержание" required>{% if post %}{{ post.body }}{% endif %}</textarea><br>
+    <button type="submit">{% if post %}Сохранить{% else %}Создать{% endif %}</button>
+</form>
+<a href="/">Отмена</a>
+{% endblock %}

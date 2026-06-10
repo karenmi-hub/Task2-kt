@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Все посты</h1>
+{% for post in posts %}
+    <div>
+        <h2><a href="/posts/{{ post.id }}">{{ post.title }}</a></h2>
+        <p>Автор: {{ post.author.username }} | Дата: {{ post.created_at }}</p>
+        <p>{{ post.body[:100] }}...</p>
+    </div>
+{% else %}
+    <p>Нет постов</p>
+{% endfor %}
+{% if current_user %}
+    <a href="/posts/new">Создать пост</a>
+{% endif %}
+{% endblock %}
